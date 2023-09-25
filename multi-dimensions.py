@@ -11,6 +11,3 @@ dict = {
 df = pd.DataFrame(dict)
 st.table(df) # allows you to view tables in full screen
 st.dataframe(df) # allows you sort columns
-
-
-

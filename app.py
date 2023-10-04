@@ -17,6 +17,8 @@ else:
     bar = st.progress(0) # creates a progress bar
     num_seconds = converter(str(timer))
     per = num_seconds / 100
+    progress_status = st.empty()
     for i in range(100):
         bar.progress(i+1)
+        progress_status.write(str(i+1) + '%')
         ts.sleep(per)

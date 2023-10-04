@@ -21,7 +21,13 @@ def selected_car2():
     print("selected car2", st.session_state["favorite_car2"])
 
 
-st.checkbox("Cats", key="cats", on_change=cats_clicked)
+cats = st.checkbox("Cats", key="cats", on_change=cats_clicked)
+dogs = st.checkbox("Dogs", key="dogs", value=True)
+
+if dogs:
+    st.write("I love dogs")
+else:
+    pass
 
 radio = st.radio("Select One", options=("US", "UK", "Canada"), key="radio", on_change=radio_clicked)
 st.button("Click Me", on_click=buttonClicked)

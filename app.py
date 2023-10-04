@@ -1,24 +1,23 @@
 # https://www.youtube.com/watch?v=oTbbfuH44Gg&list=PLa6CNrvKM5QU7AjAS90zCMIwi9RTFNIIW&index=11
 
 import streamlit as st
-from datetime import time
-import time as ts
 
-def converter(val):
-    m, s, ms = val.split(':')
-    return int(m) * 60 + int(s) + (int(ms)/1000)
+st.markdown("<h1>User Registration</h1>", unsafe_allow_html=True)
 
-timer = st.time_input("Timer", value=time(0, 0, 0)) # set default value 0 hours, 0 minutes, 0 seconds
+# Form Method #1
+form=st.form("my_form")
+form.text_input("User Name", key="user_name")
+form.form_submit_button("Submit")
 
-# timer is a datetime object
-if str(timer) == "00:00:00":
-    st.write("Please set the timer.")
-else:
-    bar = st.progress(0) # creates a progress bar
-    num_seconds = converter(str(timer))
-    per = num_seconds / 100
-    progress_status = st.empty()
-    for i in range(100):
-        bar.progress(i+1)
-        progress_status.write(str(i+1) + '%')
-        ts.sleep(per)
+# Form Method #2
+with st.form("other_form"):
+    st.text_input("Password", key="user_password")
+    st.form_submit_button("Submit")
+
+# Form with Columns
+with st.form("third_form"):
+    col1, col2 = st.columns(2)
+    col1.text_input("First Name", key="user_first_name")
+    col2.text_input("Last Name", key="user_last_name")
+    st.text_input("Email Address", key="user_email_address")
+    st.form_submit_button("Submit")
